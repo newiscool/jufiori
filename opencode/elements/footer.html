@@ -1,0 +1,177 @@
+
+{% if pages.current  == 'home' %}
+    {% element 'snippets/newsletter' %}
+    {% element 'snippets/quemsomos' %}
+{% endif %}
+<footer id="footer">
+    <div class="footer__container">
+
+        <nav class="footer__nav">
+
+            <ul class="footer__list">
+                <li class="footer__title-item">
+                    Institucional            
+                </li>
+                {% if (settings['institucional01']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional01 }}">{{ settings.institucional01nome}}</a></li>
+                {% endif %}
+                {% if (settings['institucional02']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional02 }}">{{ settings.institucional02nome}}</a></li>
+                {% endif %}
+                {% if (settings['institucional03']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional03 }}">{{ settings.institucional03nome}}</a></li>
+                {% endif %}
+                {% if (settings['institucional04']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional04 }}">{{ settings.institucional04nome}}</a></li>
+                {% endif %}
+                {% if (settings['institucional05']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional05 }}">{{ settings.institucional05nome}}</a></li>
+                {% endif %}
+                {% if (settings['institucional06']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional06 }}">{{ settings.institucional06nome}}</a></li>
+                {% endif %}
+                {% if (settings['institucional07']) %}
+                    <li class="footer__list-item"><a href="{{ settings.institucional07 }}">{{ settings.institucional07nome}}</a></li>
+                {% endif %}
+            </ul>
+
+            <ul class="footer__list">
+                <li class="footer__list-item footer__title-item">
+                    Dúvidas            
+                </li>
+
+                {% if (settings['duvidas01']) %}
+                    <li class="footer__list-item"><a href="{{ settings.duvidas01 }}">{{ settings.duvidas01nome }}</a></li>
+                {% endif %}
+                {% if (settings['duvidas02']) %}  
+                    <li class="footer__list-item"><a href="{{ settings.duvidas02 }}">{{ settings.duvidas02nome }}</a></li>
+                {% endif %}
+                {% if (settings['duvidas03']) %}
+                    <li class="footer__list-item"><a href="{{ settings.duvidas03 }}">{{ settings.duvidas03nome }}</a></li>
+                {% endif %}
+                {% if (settings['duvidas04']) %}
+                    <li class="footer__list-item"><a href="{{ settings.duvidas04 }}">{{ settings.duvidas04nome }}</a></li>
+                {% endif %}
+                {% if (settings['duvidas05']) %}
+                    <li class="footer__list-item"><a href="{{ settings.duvidas05 }}">{{ settings.duvidas05nome }}</a></li>
+                {% endif %}
+                {% if (settings['duvidas06']) %}
+                    <li class="footer__list-item"><a href="{{ settings.duvidas06 }}">{{ settings.duvidas06nome }}</a></li>
+                {% endif %}
+                {% if (settings['duvidas07']) %}
+                    <li class="footer__list-item"><a href="{{ settings.duvidas07 }}">{{ settings.duvidas07nome }}</a></li>
+                {% endif %}
+            </ul>
+
+            
+
+           <!-- <ul class="footer__list">
+                <li class="footer__list-item footer__title-item">
+                    Serviços            
+                </li>
+
+                {% if (settings['servicos01']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos01 }}">{{ settings.servicos01nome}}</a></li>
+                {% endif %}
+
+                {% if (settings['servicos02']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos02 }}">{{ settings.servicos02nome}}</a></li>
+                {% endif %}
+
+                {% if (settings['servicos03']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos03 }}">{{ settings.servicos03nome}}</a></li>
+                {% endif %}
+
+                {% if (settings['servicos04']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos04 }}">{{ settings.servicos04nome}}</a></li>
+                {% endif %}
+
+                {% if (settings['servicos05']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos05 }}">{{ settings.servicos05nome}}</a></li>
+                {% endif %}
+
+                {% if (settings['servicos06']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos06 }}">{{ settings.servicos06nome}}</a></li>
+                {% endif %}
+
+                {% if (settings['servicos07']) %}
+                    <li class="footer__list-item"><a href="{{ settings.servicos07 }}">{{ settings.servicos07nome}}</a></li>
+                {% endif %}
+            </ul> -->
+
+            <ul class="footer__list">
+                <li class="footer__list-item footer__title-item">
+                    Atendimento            
+                </li>
+                <li class="footer__list-item support__contact">
+                    <span>
+                        <em>Telefone</em>
+                        <strong>{{ settings.phones }}</strong>
+                    </span>
+                    <span>
+                        <em>Whatsapp</em>
+                        <strong>{{ settings.whatsapp }}</strong>
+                    </span>
+                </li>
+
+                 <li class="footer__list-item support__office-hours">
+                    {{ settings.support }}
+                 </li>
+
+                <li class="footer__list-item support__contact support__contact-mail">
+                    <span>
+                       <em>E-mail</em>
+                       <strong>{{ settings.emailum }}</strong>
+                    </span>
+                </li>
+                 <li class="footer__list-item"><a href="">Fale Conosco</a></li>
+            </ul>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fforminhasjufiori%2F&tabs=timeline&width=300&height=280&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="280" height="280" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        </nav>
+
+        <section class="payment-and-security">
+            <div class="payment">
+                <strong class="footer__title-item">Formas de pagamento</strong>
+                <div class="payment__container">
+                    <div class="payment__credt">
+                        <em>Crédito</em>
+                        {% for payment in paymentMethods.credit %}
+                            <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}">
+                        {% endfor %}
+                    </div>
+                    <div class="payment__debt">
+                        <em>Transferência Online, Boleto e Depósito</em>
+                        {% for payment in paymentMethods.order %}
+                            <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}">
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="security">
+                <strong class="footer__title-item">Segurança</strong>
+                <div class="security__container">
+                    <div class="security__seal">{{ seals.ebit }} <img src="http://fakeimg.pl/130x40/"></div>
+                    <div class="security__seal">{{ seals.hackersafe }} <img src="http://fakeimg.pl/90x40/"></div>              
+                </div>
+            </div>
+        </section>
+    
+    <div class="designby">
+        <div class="designbyblock">                     
+            <figure class="brand-footer">
+                <a href="http://www.agencianewiscool.com.br" target="_blank" title="Agência new is cool" >
+                    <img src="{{ asset('img/newiscool.jpeg') }}" alt="Agência new is cool ">
+                </a>
+            </figure>            
+            <a href="https://lojavirtual.tray.com.br/" class="traylink" target="_blank">                        
+                <img src="{{ asset('img/tray-logo.png') }}" alt="Tray plataforma ">                        
+            </a>
+        </div>
+    </div>
+    <section class="copyright">
+        <div class="copyright__container">
+            <div class="copyright__text">{{ settings.copyright }}</div>             
+        </div>
+    </section>
+</footer>

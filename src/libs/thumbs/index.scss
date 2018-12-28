@@ -1,0 +1,36 @@
+
+.thumbs {
+    width 					: 90px;
+    margin-right                : 10px;
+    @media (max-width:992px){
+        margin: 15px 0;        
+        width: 300px;
+    }
+    @media (max-width:600px){
+        margin: 15px 0;        
+        width: 92vw;
+    }
+    
+    &__list {
+        display 				: block;
+        text-align              : center;
+        
+        &:not(.slick-initialized) {
+            display 			: flex;
+            justify-content 	: center;
+            flex-wrap: wrap;
+            .thumbs__item{
+                margin-bottom: 5px;
+            }
+        }
+    }	
+
+    &__link {
+        position 				: relative;
+        display 				: block;
+        padding                 : 0 5px;
+        max-width 				: 100%;
+        overflow 				: hidden;
+    }   
+
+}

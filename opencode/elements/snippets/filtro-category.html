@@ -1,0 +1,81 @@
+
+{% set categoriesFilter = ['1'] %}
+<form id="filter-car" method="GET" action="">  
+    <div class="filter-description">
+        <span>Pesquise pelo</span>
+        <span><strong>Seu modelo</strong></span>
+    </div>
+    <div class="filter-veicle">
+        <select name="filtrar_modelo" id="filter-model" class="filter filter-modelo">
+            <option value="">Selecione um Modelo</option>
+            {% for category in categories %}
+                {% if category.id in categoriesFilter %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endif %}    
+            {% endfor %}
+        </select>
+        <select name="filtrar_ano" id="filter-year" class="filter filter-ano" disabled></select>
+        <button type="submit" class="btn-search search__button" id="filter-button" disabled>
+            <svg class="search__icon icon--search"><use xlink:href="#icon-search"></use></svg>
+        </button>
+    </div>
+</form>
+<script>
+    jQuery(document).ready(function($){
+        var form    = $('#filter-car')
+        var model   = $('#filter-model');
+        var year    = $('#filter-year');
+        var button  = $('#filter-button');
+
+        model.on('change', function(evt){ searchModel(evt.target.value) });
+        year.on('change', function(evt){ setAction(evt.target.value); });
+        form.on('submit', function(evt){
+            evt.preventDefault();
+            window.location.href = form.attr('action');
+        });
+
+        function setAction(value) {
+            if($.trim(value).length > 0) {
+                form.attr('action', $('option[value='+value+']', year).attr('data-url'));
+                button.attr('disabled', false);
+            } else {
+                form.attr('action', '');
+                button.attr('disabled', true);
+            }
+        }
+
+        function isLoadYear(msg) {
+            form.attr('action', '');
+            year.attr('disabled', true);
+            button.attr('disabled', true);
+            year.html('<option value="" selected>'+msg+'</option>');
+        }
+
+        function loadSelectYear(years){
+            year.html('<option value="" selected>Selecione um ano</option>');
+
+            $.each(years, function(index,item){
+                year.append('<option data-url="'+item.Category.link.http.replace('http:', '')+'" value="'+item.Category.id+'">'+item.Category.name+'</option>');
+            });
+
+            year.attr('disabled', false);
+        }
+
+        function searchModel(idModel) {
+            isLoadYear('Buscando ano . . .');
+            $.ajax({
+                method: "GET",
+                url: "/web_api/categories/tree/"+idModel
+            }).done(function( response, textStatus, jqXHR ) {
+                isLoadYear('Carregando todos anos . . .');
+                if(response.Category.length)
+                    loadSelectYear(response.Category[0].Category.children)
+                else isLoadYear('Nenhum ano encontrado . . .');
+            }).fail(function( jqXHR, status, errorThrown ){
+                var response = $.parseJSON( jqXHR.responseText );
+                console.log(response);
+            });
+        }
+
+    });
+</script>

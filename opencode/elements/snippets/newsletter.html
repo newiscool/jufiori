@@ -1,0 +1,31 @@
+<section id="newsletter" >
+    <div class="newsletter">
+        <div class="env-brand newsletter_brand">
+            <figure class="brand">
+                <img src="{{ asset('img/logob.png') }}" alt="{{store.name}} ">
+            </figure>
+        </div>
+
+        <div class="newsletter_block">
+            <div class="newsletter__title">
+                <div class="newsletter__info">
+                    <span>Receba nossas </span>
+                    <strong>novidades por email</strong>
+                </div>
+            </div>
+            <form action="{{ links.newsletter }}" class="newsletter__form" method="POST">
+                <input type="hidden" name="loja" value="{{ store.id }}">
+                <div class="input-box">            
+                    <input name="nome" id="news-nome" type="text" class="newsletter__name newsletter__input" placeholder="Digite seu nome">
+                </div>
+                <div class="input-box">            
+                    <input name="email" type="text" id="news-email" class="newsletter__email newsletter__input" placeholder="Digite seu e-mail">
+                </div>
+
+
+                
+                <button type="input" class="newsletter__button">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</section>
