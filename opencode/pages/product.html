@@ -1,47 +1,35 @@
-{% element 'snippets/breadcrumb' %}
-
-
-
-{% if utils.is_mobile %}
 <div id="product-page" class="product-page">
-    <div class="produto-wrapper" itemscope itemtype="http://schema.org/Product">  
-        <section class="price-shipping__block-bottom">
+    <div class="produto-wrapper" itemscope itemtype="http://schema.org/Product">
+        <section class="product__general-information">
+            <div class="product__offer" >
+                {% set percent = 100 - ( product.price_offer / product.price ) * 100 %}
+                <span>-{{ percent|number_format }}%</span>
+            </div>
+            <div class="product-img" id="visualBlock">
+                {{ productHelper.gallery() }}
+            </div>
+        </section>
+        <section class="product__general-price-information price-shipping__block-bottom">
             <div class="price-shipping__block">
-                <header>
-                    <ul class="product-info__list">
-                        <li class="product-info__item">
-                            <span class="product-info__desc">{{ product.brand }}</span>
-                        </li>
-                        <li class="product-info__item">
-                            {% if product.ranking %}
-                            <div class="product__rating-wrapper">
-                                <span class="product__rating__stars" data-stars-count="{{ product.ranking.rating }}">
-                                    <span class="star{{ product.ranking.rating }}"></span><span class="ranking-nota-final"></span>
-                                </span>
-                                
-                            </div>
-                            {% endif %}
-                        </li>
-                    </ul>
-
-                    <h1 class="product__name">{{ product.name }}</h1>
-                    <section class="product__general-information">
-                        <div class="product__offer">
-                            {% set percent = 100 - ( product.price_offer / product.price ) * 100 %}
-                            <span>-{{ percent|number_format }}%</span>                            
-                        </div>                              
-                    </section>
-                    <div class="product-img" id="visualBlock">
-                        {{ productHelper.gallery() }}
+                <header class="header-infoproduct">
+                    <div class="product-info__item">
+                        <a href="https://www.amamosmake.com/{{ product.brand }}" class="product-info__desc" target="_blank">{{ product.brand }}</a>
                     </div>
-                    
-                    <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}">
-                            <div class="product-main__prices">
-                                <div id="preco" align="left">
-                                    {{ productHelper.pricing() }}                  
-                                </div>
-                            </div>
-                            
+                    <h1 class="product__name " itemprop="name">{{ product.name }}</h1>
+                        <div class="product-info__item">
+                            <a href="https://www.amamosmake.com/{{ product.brand }}" class="product-info__desc" target="_blank">{{ product.brand }}</a>
+                        </div>
+                    {% if product.ranking %}
+                        <div class="product__rating-wrapper">
+                            <span class="product__rating__stars" data-stars-count="{{ product.ranking.rating }}">
+                            <span class="star{{ product.ranking.rating }}"></span><span class="ranking-nota-final"></span>
+                            </span>
+                        </div>
+                    {% endif %}
+                    <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        {{ productHelper.pricing(price) }}
+                        {{ productHelper.gifts() }}
+                        <div class="tag-freeshiping">
                             {% if product.additional_button %}
                                 {% if Image('additional_button') %}
                                         <span class="free-shipping">{{ Image('additional_button') }}</span>
@@ -49,252 +37,145 @@
                                         <span class="free-shipping">Frete Grátis Sul e Sudeste</span>
                                 {% endif %}
                             {% endif %}
-                            
-                            {% if product.available and product.stock > 0 %}
-                            <div class="product__buy">
-                                <div data-app="product.quantity" class="product__quantity">
-                                    <span id="span_erro_carrinho" class="blocoAlerta" style="display:none;">Selecione uma opção para variação do produto</span>
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% if productHelper.variants() %}
-                                <div class="product__variations">{{ productHelper.variants() }}</div>
-                            {% endif%}
-                            <div class="product__kit">{{ productHelper.kit() }}</div>
-                            {% if productHelper.form() %}
-                                <div class="tray-product-form-wrapper">
-                                    {{ productHelper.form() }}
-                                </div>
-                            {% endif %}
-                        </form>
-                   <!--
-                    <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}">
-                            {{ productHelper.pricing(price) }}
-                            <div id="produto_nao_disp">
-                                <input type="hidden" name="verifica_variacao" id="verifica_variacao" value="">
-                                <input type="hidden" name="verifica_clientes_aguardando" id="verifica_clientes_aguardando" value="1">
-                                <input type="hidden" name="verifica_estoque_venda" id="verifica_estoque_venda" value="">
-                                <input type="hidden" name="verifica_variacao_dupla_valor" id="verifica_variacao_dupla_valor" value="0">
-                                <input type="hidden" name="layout_variacao" id="layout_variacao" value="1">
-                                <input type="hidden" name="define_radio_select" id="define_radio_select" value="">
-                            </div>
-                            {{ productHelper.gifts() }}
-                            <div class="tag-freeshiping">
-                                {% if product.additional_button %}
-                                    {% if Image('additional_button') %}
-                                            <span class="free-shipping">{{ Image('additional_button') }}</span>
-                                    {% else %}
-                                            <span class="free-shipping">Frete Grátis Sul e Sudeste</span>
-                                    {% endif %}
-                                {% endif %}
-                            </div> 
-                            <div class="product__variations">{{ productHelper.variants() }}</div>
-
-                        
-                                
-                            <div class="product__kit">{{ productHelper.kit() }}</div>
-                            {% if productHelper.form() %}
-                                <div class="tray-product-form-wrapper">
-                                    {{ productHelper.form() }}
-                                </div>
-                            {% endif %}
-                         
-                        </form>
-                         -->
-                </header>
-            <div class="social-midias">{{ productHelper.social() }}</div>
-        </div>
-        </section>  
-        <section id="ProdBlock" class="product__tabs col-xs-12 ">
-                <a name="formaPagto"></a>
-                <div id="descricao" class="prodBox dispblock">
-                    <div class="board">
-                        <h3 class="triger_btn-tabs">{{ productTabs.description.description }}  
-                    <svg class="cat__icon icon--arrow-bottom ">
-                        <use xlink:href="#icon-arrow-bottom"></use>
-                    </svg>
-                        </h3>
-                        <div class="board_htm description tabs_wrap">
-                            {{ product.description ? product.description : product.description_small }}
                         </div>
-                    </div>
-                </div>
-                <div id="coments" class="prodBox dispblock ">
-                    <h3 class="triger_btn-tabs">{{ productTabs.comments.description }} 
-                    <svg class="cat__icon icon--arrow-bottom ">
-                        <use xlink:href="#icon-arrow-bottom"></use>
-                    </svg>
-                    </h3>
-                    <div class="board tabs_wrap">
-                        {% element 'product/comments' %}
-                    </div>
-                </div>
-                <div id="coments" class="prodBox {{productTabs.custom.description }}">
-                    <h3 class="triger_btn-tabs">{{ productTabs.AdditionalTab8.description }}  
-                    <svg class="cat__icon icon--arrow-bottom ">
-                        <use xlink:href="#icon-arrow-bottom"></use>
-                    </svg>
-                    </h3>
-                    <div class="board ">
-                        {{ productTabs.custom.content }}
-                    </div>
-                </div>
-                {{ productTabs.downloads.content }}
-                <div data-app="product.payment-methods" id="formasPagto" class="prodBox dispblock" style="display:none;"></div>
-            </section>
-        </section>
-    </div>
-    {% if product.related_products %}
-        <section class="col-xs-12 product__related">
-            <h4  class="banners-extra__title title--main">Produtos Recomendados</h4>
-            <div class="product__related">
-                {% element 'snippets/showcase' {"products": product.related_products } %}
-            </div>
-        </section>
-    {% endif %}
-</div>
+                        <div class="product__variations">{{ productHelper.variants() }}</div>
+                        <div class="product__kit">{{ productHelper.kit() }}</div>
+                        {% if productHelper.form() %}
+                            <div class="tray-product-form-wrapper">{{ productHelper.form() }}</div>
+                        {% endif %}
+                    </form>
+                </header>
 
-<!-- DESKTOP -->
+                <!-- teste <span>{{ cart.price }} </span> -->
+                <!-- <span data-cart="price"></span> -->
+                
 
-{% else %}
-<div id="product-page" class="product-page">
-    <div class="produto-wrapper" itemscope itemtype="http://schema.org/Product">  
-        <section class="product__general-price-information price-shipping__block-bottom">
-            <div class="price-shipping__block">
-                <header>
-                    <div class="product-info__item">
-                        <span class="product-info__desc">{{ product.brand }}</span>
-                    </div>
-                    <h1 class="product__name hidden-xs hidden-sm">{{ product.name }}</h1>
-                    <ul class="product-info__list">
-                        <!-- <li class="product-info__item">
-                            <span class="product-info__title">SKU:</span>
-                            <span class="product-info__desc">{{ product.id }}</span>
-                        </li> -->
+                <div class="bloco_condicoes">
+                    <ul class="lista_condicoes">
+                        <li  class="condicoes-item">
+                            <svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg>
+                            <svg class="search__icon icon--search"><use xlink:href="#icon-cart"></use> </svg>
+                            <span class="label-item">Como Comprar</span>
+                            <div class="dropdown-content">
+                                    <button class=" closeModalinfo"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                    <span>
+                                        <p class="first-paragraph hidden-lg"><strong>Como comprar?</strong></p>
+                                        <p><strong>Para comprar na Ju Fiori forminhas é muito fácil:</strong></p>
+                                        <p>1) Navegue entre nossos diversos  produtos e clique sobre o botão <strong>COMPRAR</strong> para adicionar um produto ao carrinho de compras. </p>
+                                        <p>2) Após selecionar todos produtos clique no ícone do <strong>CARRINHO </strong> para iniciar o processo de finalização.</p>
+                                        <p>3) Calcule o frete e clique sobre o botão <strong>FINALIZAR PEDIDO.</strong> </p>
+                                        <p>4) Faça seu login caso já tenha cadastro na loja, ou faça seu cadastro, é rápido e simples.</p>
+                                        <p>5) Você pode escolher a forma de pagamento entre boleto ou cartão de crédito.</p>
+                                        <p>6) Agora basta clicar <strong>FINALIZAR PEDIDO.</strong> Pronto, seu pedido já está feito, mais informações serão enviadas por e-mail. ;)</p>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="condicoes-item">
+                            <svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg>
+                            <svg class="search__icon icon--search"><use xlink:href="#icon-troca-facil"></use> </svg>
+                            <span class="label-item">Troca Fácil</span>
+                            <div class="dropdown-content">
+                                <button class=" closeModalinfo"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <span>
+                                    <p class="first-paragraph hidden-lg"><strong>Troca fácil</strong></p>
+                                    <p>Você pode trocar qualquer produto, seja por insatisfação com a compra, 
+                                    pedido incorreto ou mesmo arrependimento.</p>
+                                    <p>É possível fazer a solicitação de troca em até 30 (trinta) dias corridos após a entrega. 
+                                    Para isso, o produto deverá estar em sua embalagem original, sem indícios 
+                                    de uso e/ou danos no produto. Para os casos de insatisfação com o 
+                                    produto adquirido ou arrependimento da compra, cabe ao cliente 
+                                    arcar com o custo do frete referente ao envio do produto para troca.</p>
+                                    <p>Solicite a troca através do e-mail: forminhasjufiori@gmail.com</p>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="condicoes-item">
+                            <svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg>
+                            <svg class="search__icon icon--search"><use xlink:href="#icon-delivery-truck"></use> </svg>
+                            <span class="label-item">Prazos e Entrega</span>
+                            <div class="dropdown-content">
+                                <button class=" closeModalinfo"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <span>
+                                    <p class="first-paragraph hidden-lg"><strong>Prazos e entregas</strong></p>
+                                    <p>Todos pedidos são enviados em até 1 dia útil após a 
+                                    confirmação de pagamento. </p>
+                                    <p>O prazo para a entrega varia de acordo com a forma de envio 
+                                    escolhida.</p>
+                                    <p>Você poderá rastrear a entrega através do código de rastreio, 
+                                    que é enviado via e-mail. Se persistir dúvidas, entre em contato 
+                                    conosco através do telefone: <strong>(14) 99750-2053</strong>, ou por e-mail: <strong>forminhasjufiori@gmail.com </strong></p>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="condicoes-item">
+                            <svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg>
+                            <svg class="search__icon icon--search"><use xlink:href="#icon-delivery-truck"></use> </svg>
+                            <span class="label-item">Frete Grátis</span>
+                            <div class="dropdown-content">
+                                <button class=" closeModalinfo"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <span>
+                                    <p class="first-paragraph hidden-lg"><strong>Frete grátis</strong></p>
+                                    <p>Regras para frete grátis, selecione o seu estado:</p>
+                                    <div class="bloco-frete">
+                                        {% element 'snippets/tabela-frete' %}
+                                    </div>
+                                </span>
+                            </div>
+                        </li>
                     </ul>
-                    
-                    {% if product.ranking %}
-                    <div class="product__rating-wrapper">
-                        <span class="product__rating__stars" data-stars-count="{{ product.ranking.rating }}">
-                          <span class="star{{ product.ranking.rating }}"></span><span class="ranking-nota-final"></span>
-                          <a href="#descricaoanchor" id="avalieClick">Avalie este produto</a>
-                        </span>
-                    </div>
-                    {% endif %}
-                        <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}">
-                            {{ productHelper.pricing(price) }}
-                            <div id="produto_nao_disp">
-                                <input type="hidden" name="verifica_variacao" id="verifica_variacao" value="">
-                                <input type="hidden" name="verifica_clientes_aguardando" id="verifica_clientes_aguardando" value="1">
-                                <input type="hidden" name="verifica_estoque_venda" id="verifica_estoque_venda" value="">
-                                <input type="hidden" name="verifica_variacao_dupla_valor" id="verifica_variacao_dupla_valor" value="0">
-                                <input type="hidden" name="layout_variacao" id="layout_variacao" value="1">
-                                <input type="hidden" name="define_radio_select" id="define_radio_select" value="">
-                            </div>
-                            {{ productHelper.gifts() }}
-                            <div class="tag-freeshiping">
-                                {% if product.additional_button %}
-                                    {% if Image('additional_button') %}
-                                            <span class="free-shipping">{{ Image('additional_button') }}</span>
-                                    {% else %}
-                                            <span class="free-shipping">Frete Grátis Sul e Sudeste</span>
-                                    {% endif %}
-                                {% endif %}
-                            </div> 
-                            <div class="product__variations">{{ productHelper.variants() }}</div>
+                </div>
 
-                        
-                                
-                            <div class="product__kit">{{ productHelper.kit() }}</div>
-                            {% if productHelper.form() %}
-                                <div class="tray-product-form-wrapper">
-                                    {{ productHelper.form() }}
-                                </div>
-                            {% endif %}
-                         
-                        </form>
-                        <!-- <div class="product__shipping">
-                            {{ productHelper.shipping() }}
-                            {% if settings.freeShippingActived == '1' %}
-                            <div class="free-shipping">
-                                <svg class="free-shipping__icon icon--shipping">
-                                    <use xlink:href="#icon-shipping"></use>
-                                </svg>
-                                <span class="free-shipping__title">
-                                    Frete Grátis
-                                </span>
-                                <span class="free-shipping__desc">
-                                    {{ settings.freeShipping }}
-                                </span>
-                            </div>
-                            {% endif %}
-                        </div> -->
-                </header>
             <div class="social-midias">{{ productHelper.social() }}</div>
         </div>
-        </section>  
-        <section class="container-right_block">            
-        <section class="product__general-information">
-            <div class="product__offer">
-                {% set percent = 100 - ( product.price_offer / product.price ) * 100 %}
-                <span>-{{ percent|number_format }}%</span>                            
-            </div>              
-            <div class="product-img" id="visualBlock">
-                {{ productHelper.gallery() }}
+        </section>
+
+        <section id="ProdBlock" class="product__tabs col-xs-12 ">
+            <a name="formaPagto"></a>
+            <div id="descricao" class="prodBox dispblock drop">
+                <div class="board">
+                    <h3 class="triger_btn-tabs">{{ productTabs.description.description }}<svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg></h3>
+                    <div class="board_htm description tabs_wrap" itemprop="description">
+                        {{ product.description ? product.description : product.description_small }}
+                    </div>
+                </div>
             </div>
-        </section>                          
-            {% if productHelper.bundle %}
-                <section class="product__bundle ">
-                    <h4 class="product__title">Compre Junto</h4>
-                    {{ productHelper.bundle }}
-                </section>
-            {% endif %}
-            <section id="ProdBlock" class="product__tabs col-xs-12 ">
-                    <a name="formaPagto"></a>
-                    <div id="descricao" class="prodBox dispblock drop">
-                        <div class="board">
-                            <h3 class="triger_btn-tabs">{{ productTabs.description.description }}  
-                    <svg class="cat__icon icon--arrow-bottom ">
-                        <use xlink:href="#icon-arrow-bottom"></use>
-                    </svg>
-                            </h3>
-                            <div class="board_htm description tabs_wrap">
-                                {{ product.description ? product.description : product.description_small }}
-                            </div>
-                        </div>
-                    </div>
-                    <div id="coments" class="prodBox dispblock ">
-                        <h3 class="triger_btn-tabs">{{ productTabs.comments.description }} 
-                    <svg class="cat__icon icon--arrow-bottom ">
-                        <use xlink:href="#icon-arrow-bottom"></use>
-                    </svg>
-                        </h3>
-                        <div class="board tabs_wrap">
-                            {% element 'product/comments' %}
-                        </div>
-                    </div>
-                    <div id="coments" class="prodBox {{productTabs.custom.description }}">
-                        <h3 class="triger_btn-tabs">{{ productTabs.AdditionalTab8.description }}  
-                    <svg class="cat__icon icon--arrow-bottom ">
-                        <use xlink:href="#icon-arrow-bottom"></use>
-                    </svg>
-                        </h3>
-                        <div class="board ">
-                            {{ productTabs.custom.content }}
-                        </div>
-                    </div>
-                    {{ productTabs.downloads.content }}
-                    <div data-app="product.payment-methods" id="formasPagto" class="prodBox dispblock" style="display:none;"></div>
-                </section>
+            <div id="coments" class="prodBox dispblock ">
+                <h3 class="triger_btn-tabs">{{ productTabs.comments.description }}<svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg></h3>
+                <div class="board tabs_wrap">{% element 'product/comments' %}</div>
+            </div>
+            <div id="coments" class="prodBox {{productTabs.custom.description }}">
+                <h3 class="triger_btn-tabs">{{ productTabs.AdditionalTab8.description }}<svg class="cat__icon icon--arrow-bottom "><use xlink:href="#icon-arrow-bottom"></use></svg></h3>
+                <div class="board ">{{ productTabs.custom.content }}</div>
+            </div>
+            {{ productTabs.downloads.content }}
+            <div data-app="product.payment-methods" id="formasPagto" class="prodBox dispblock" style="display:none;"></div>
         </section>
     </div>
+    {% if productHelper.bundle %}
+        <section class="product__bundle ">
+            <h4 class="product__title">Compre Junto</h4>
+            {{ productHelper.bundle }}
+        </section>
+    {% endif %}
     {% if product.related_products %}
-        <section class="col-xs-12 product__related">
+        <section class="product__related">
             <h4  class="banners-extra__title title--main">Produtos Recomendados</h4>
-            <div class="product__related">
+            <div class="product__related ">
                 {% element 'snippets/showcase' {"products": product.related_products } %}
             </div>
         </section>
     {% endif %}
+
 </div>
-{% endif%}
+<div id="prognoos_ib"></div>
+{% if settings.history_position == 1 %}
+    <section class="products-visited">
+        <h3 class="related-title">Últimos produtos visitados</h3>
+        {% element 'snippets/history' {
+            'store.id': store.id,
+            'pages.current': pages.current,
+            'category.id': category.id
+        } %}
+    </section>
+{% endif %}
+

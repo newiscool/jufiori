@@ -244,8 +244,9 @@
   text-transform: uppercase;
   transition: all 150ms ease-in-out;
   position: absolute;
-  right: 35px;
+  right: 30px;
   height: 40px;
+  border: 1px solid #fff;
   @media(max-width: 680px){
     position: initial;
   }

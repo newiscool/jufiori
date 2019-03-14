@@ -1,3 +1,35 @@
+if (window.innerWidth < 992) {
+    jQuery( ".checkMenu" ).on( "click", function() {
+        // console.log("passouAq")
+            if( jQuery("#wrapper").hasClass("menuClose")) {
+                jQuery("#wrapper").removeClass("menuClose");
+            }
+        })
+    jQuery( ".close-menu" ).on( "click", function() {
+        jQuery("#wrapper").addClass("menuClose");
+    })
+}
+
+jQuery( document ).ready(function() {
+    if (window.innerWidth < 992) {
+        jQuery( ".checkMenu" ).on( "click", function() {
+            // console.log("passouAq")
+                if( jQuery("#wrapper").hasClass("menuClose")) {
+                    jQuery("#wrapper").removeClass("menuClose");
+                }
+            })
+        jQuery( ".close-menu" ).on( "click", function() {
+            jQuery("#wrapper").addClass("menuClose");
+        })
+    }
+})
+
+jQuery(function() {
+    jQuery('#colorselector').change(function(){
+      jQuery('.colors').hide();
+      jQuery('#' + jQuery(this).val()).show();
+    });
+  });
 // if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript requires jQuery')}
 // +function ($) {'use strict';
 // 	var version = $.fn.jquery.split(' ')[0].split('.')
@@ -121,6 +153,7 @@ jQuery(document).ready(function ($) {
                 navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
                 pagination: false,
             });
+            
 
             jQuery(".banners-extra__list").owlCarousel({
                 autoPlay: false,
@@ -133,6 +166,19 @@ jQuery(document).ready(function ($) {
                 pagination: false,
                 singxleItem: false
             });
+            jQuery(".product__related ul").owlCarousel({
+                autoPlay: false,
+                items: 4,
+                itemsCustom: [[320, 2], [768, 2], [992, 3], [1200, 4]],
+                itemsScaleUp: false,
+                itemsTabletSmall: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false,
+                singxleItem: false
+            });
+
+            
             
             if(jQuery(window).width() < 1200) {
                 jQuery(".vertical-showcases ul").owlCarousel({
@@ -151,42 +197,24 @@ jQuery(document).ready(function ($) {
         }
     }(jQuery);
 
-    +function ($) {
-        'use strict';
+    // +function ($) {
+    //     'use strict';
 
-        var $smartFilterMobile = jQuery('.mobileFilter');
-        var $mobileMenu = jQuery('.mobileMenu');
-        var $mask = jQuery('#mask');
+    //     var $smartFilterMobile = jQuery('.mobileFilter');
+    //     var $mobileMenu = jQuery('.mobileMenu');
+    //     var $mask = jQuery('#mask');
 
-        jQuery($smartFilterMobile).click(function () {
-            jQuery('body').toggleClass('ac_sm_ft');
-        });
-        jQuery($mobileMenu).click(function () {
-            jQuery('body').toggleClass('ac_sm_menu');
-        });
-        jQuery($mask).click(function () {
-            jQuery('body').removeClass('ac_sm_menu ac_sm_ft');
-        });
-    }(jQuery);
+    //     jQuery($smartFilterMobile).click(function () {
+    //         jQuery('body').toggleClass('ac_sm_ft');
+    //     });
+    //     jQuery($mobileMenu).click(function () {
+    //         jQuery('body').toggleClass('ac_sm_menu');
+    //     });
+    //     jQuery($mask).click(function () {
+    //         jQuery('body').removeClass('ac_sm_menu ac_sm_ft');
+    //     });
+    // }(jQuery);
 
-    +function ($) {
-        'use strict';
-
-        var errorVariacao = jQuery('#span_erro_carrinho');
-        jQuery('#form_comprar .variacao-produto').append(errorVariacao);
-        jQuery('#bt-submit-comments').remove();
-        jQuery('#form-comments').append('<button id="bt-submit-comments" class="image pointer">Enviar</button>');
-        jQuery('.page-contact #imagem').remove();
-        jQuery('.page-contact .formulario-contato').append('<button  name="imagem" id="imagem">Enviar</button>');
-        jQuery('.page-central_troca form input[type=image]').after('<button type="submit" class="button-submit" name="submit">Gerar Ordem de Devolu&#231;&#227;o</button>')
-            .remove();
-        jQuery('.page-central_gera_troca form input[type=image]').after('<button type="submit" class="button-submit" name="submit">Gerar Ordem de Devolu&#231;&#227;o</button>')
-            .remove();
-        jQuery('.page-search #vitrine-catalogo fieldset [type=image]').after('<button type="submit" class="button-submit" name="submit">Buscar</button>')
-            .remove();
-        jQuery('.page-central_senha input[type=image]').after('<button type="submit" class="button-submit" name="submit">Avan&#231;ar</button>')
-            .remove();
-    }(jQuery);
 
     +function ($) {
         jQuery('.caixa-botoes .bt-avancar').html('Avançar');
@@ -388,3 +416,18 @@ function addCart(dataProductId){
     });
 }
 
+
+//Infomações na pagina de produto (como comprar, troca facil...)
+
+jQuery("svg.search__icon").click(function () {    
+    var item = jQuery(this).closest('.condicoes-item');
+    var hasOpen = !item.hasClass('drop');
+    jQuery('.condicoes-item').removeClass('drop');
+    if(hasOpen) item.addClass("drop");
+    else{ item.removeClass("drop") }
+
+});
+
+jQuery(".closeModalinfo").click(function () {    
+    jQuery('.condicoes-item').removeClass('drop');
+});

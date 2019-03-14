@@ -1,6 +1,4 @@
-/**
- * Created by henriquebatista on 19/07/16.
- */
+
 
 function addCart(dataProductId) {
 	var dataSession = $("html").attr("data-session");

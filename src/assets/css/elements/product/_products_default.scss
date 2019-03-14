@@ -1,4 +1,8 @@
 #product-page {
+  padding-top: 30px;
+  @media (max-width:992px){
+    padding: 0;
+  }
   #add,
   // #cor_nome,
   #estoque_variacao,
@@ -55,7 +59,7 @@
   .lista_cor_variacao {
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 100%;
     @media (max-width:992px){
       width: 100%;
     }
@@ -69,17 +73,15 @@
     }
   }
   span#cor_nome {
-    margin: 10px 0;
+    margin: 10px 5px;
     position: relative;
     display: inline-block;
     align-items:  center;
     justify-content:  center;
-    padding: 5px 0;
     border-bottom: 1px solid $cor01;
     text-transform: uppercase;
-    color: $cor02;
+    color: $cor01;
 }
-
   .breadcrumb-wrapper {
     margin: 30px 0 35px;
 
@@ -90,6 +92,9 @@
     }
   }
   .texto_variacao{
+    text-align: center;
+    display: flex;
+    align-items: center;
     h2{
       font-size: 0;
       &:before{
@@ -98,6 +103,7 @@
       }
     }
     @media (max-width:768px){
+      text-align: center;
     }
   }
   .label--new {
@@ -173,6 +179,7 @@
       border: 1px solid;
       align-items: center;
       margin: 5px;
+      margin-left: 0;
 
       @media(max-width: 992px) {
         display: block!important;
@@ -195,7 +202,8 @@
     color: #667;
     display: block;
     font-size: 18px;
-    margin: 5px 0 20px;
+    margin: 5px 0 15px;
+    width: 100%;
   }
 
   #yv-review-quickreview {
@@ -284,7 +292,6 @@
     font-weight: 600;
   }
   .precode {
-    color: $cor02;
     display: block;
     font-size: 15px;
     font-weight: 400;
@@ -345,14 +352,16 @@
     .preco-de {
       color: $cor02;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 100;
     }
 
     .txt-cadaparcelas {
       font-size: 16px;
-      font-weight: 700;
       line-height: 18px;
       text-transform: uppercase;
+      strong{
+        font-weight: 100;
+      }
     }
 
     .txt-corparcelas .preco-parc2 {
@@ -361,7 +370,7 @@
 
       .color {
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 100;
         line-height: 18px;
       }
     }
@@ -1032,11 +1041,10 @@
 
 
   .labels {      
-    top: 80%;
+    top: 10px;
     z-index: 9;
     display: flex;
-    justify-content: center;
-    left: 0;
+    left: 10px;
     position: absolute;
     right: 0;
     }
@@ -1060,33 +1068,6 @@
       }
     }
 
-    .star0, .star1, .star2, .star3, .star4, .star5 {
-      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAAAPCAMAAACMV5AuAAAB2lBMVEXS0tL/vQD/vgD/vwD/wAD/wQD/wwD/xAD/xQD/xgD/xwD/yQD/ygD/ywD/zwD/0QD/0wD/3gD/4ST/4zL/92///T3//j7////S0tL/zADS0tL/1AD/wQD/wwDS0tL/zgD/6Dz/wgD/7FH/xQD/wAD/wAD/9zH/wADS0tL/wAD/wAD/wAD/wAD/vQD/vwD/vgD/xQD/vwD/vgD/vgD/xwD/vgD/vgDS0tLS0tL/vwDS0tL/vwD/wgD/vwD/vgD/wADS0tLS0tLS0tL/zAD/vgDS0tLS0tLS0tL/vwDS0tLS0tLS0tL/ugDS0tL/1QD/vwD/wAD/vwD/yQDS0tL/zADS0tLS0tL/wQDS0tL/xAD/vAD/wgD/yQD/xADS0tL/wgD/xQDS0tL/vwD/vAD/vgD/vwDS0tL/vwDS0tL/vwD/wQD/wQD/vgD/vwDS0tLS0tL/vwD/vwD/vQD/vwDS0tL/vgD/vwDS0tL/vgD/vgD/vgD/vgD/vwD/vgDS0tLS0tL/vgD/vgD/vwDS0tL/ugD/wQD/vwD/ugD/vgDS0tL/wADS0tL/vwDS0tL/vgD/vAD/vQD/vgD/vgDS0tL/vgD/vQD/vgD/vwDS0tL/vADS0tLS0tL/vQD/vgCjCk/FAAAAm3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADBwgKCwwNDQ4PEBITFRUdHiIjJCUpLS8xNDU3Ojw9R0pKS0xMTU9RUlRVVlpeX2BgZWZoaGlwcXF0dXp6e35+gIGCiYqLjI6UlZaXmp6foKGjo6anrK2usLS3ury8vcHBwsfIycrS09XY2dvc3uLk5ufo6ezt7vDz8/b5+fv7+/z9/kTGPW0AAAHDSURBVHgBrdLXl4tBGMfxn5l52V2xOq/F6ixWL6uLEL13QojeCyF6EUVEFFEi887/6uExm5u5mjPfi5w5n5vn/E5eKNWeGpxaen1hR3vHIKHG/suF/gYOfX32FdqUiqJoypFPeydEkbQjXOhv4OJnz2NwoU0pMUDMe2zu9yoh7AgX+hu4bVpvBxfalJJCrvtmvq6JWiNc6G98qLuidaWb36Ftxuz5i9deM8ZcXb98yYI5PMKB/sZHewqaKvTgb6Ft3+Vb9159p5u/3j55cOc4j3ChvyGdL9b0/2rFfBqh7dznxNiSDyd4hAv9DavqfJCrr0Bom5X72H/03cGZPMKF/gZkGq2bjQ1AaGubuvu14V7unDSGR7jQ3wBsadqbzc0AQlvbqMm5H3zz1MRho3mEC/0N1CF79ACo0DZ05Ij9v/kDPpbqHM4jXOhvoLL2aBZUaOscMu50wjevTBuoeIQL/Q3UUXv0MKjQplTvbfPz4Zm7X5JHy4TgES70N1CX6F61Sj8XQIU2KVc+fX9+kZx78s2LrVLyCBf6G6iSLu/q6tpR1iVQoU3K1Rf3TJdCjd94dpP9J1zob6BuZGJQceYmqMD2B6R219Zqw5vuAAAAAElFTkSuQmCC") no-repeat;
-      float: left;
-      height: 15px;
-      margin-right: 5px;
-      width: 96px;
-    }
-
-    .star1 {
-      background-position: -80px 0
-    }
-
-    .star2 {
-      background-position: -60px 0
-    }
-
-    .star3 {
-      background-position: -40px 0
-    }
-
-    .star4 {
-      background-position: -20px 0
-    }
-
-    .star5 {
-      background-position: 0 0
-    }
   }
 
   //---
@@ -1172,12 +1153,14 @@
       line-height: normal;
       margin: 0;
       text-align: left;
-      text-transform: uppercase;  
       padding: 15px 0;
-      text-align: center;
-
+      font-size: 0;
       &:nth-of-type(2) {
         display: none;
+      }
+      &:before{
+        content: 'Já usou este produto? Conte pra gente como foi!';
+        font-size: 13px;
       }
     }
 
@@ -1196,12 +1179,18 @@
     #comentario_cliente {
       > a {
         color: $cor01;
-        display: block;
+        display: flex;
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 400;
         line-height: normal;
-        margin: 0 0 25px;
+        margin: 15px 0 25px;
         text-align: left;
+        border: 1px solid $cor01;
+        position: relative;
+        max-width: 220px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
       }
 
       h3 {
@@ -1356,10 +1345,8 @@
         }
       }
     }
-
     .hreview-comentarios {
       padding: 5px 0;
-
       h3 {
         color: $cor02;
         display: flex;
@@ -1490,7 +1477,7 @@
     text-transform: uppercase;
     width: 30%;
 
-    @include button-action('', '', white, darken($cor01, 10%));
+    // @include button-action('', '', white, darken($cor01, 10%));
 
     @media (max-width: 767px) {
       display: none;
@@ -1514,6 +1501,11 @@
       margin: 0;
     }
   }
+}
+
+.border.indisponivel figure{
+  filter:grayscale(1);
+  opacity: 0.5;
 }
 
 ul#carousel {
@@ -1751,10 +1743,15 @@ ul#carousel {
 }
 
 .product-info__item {
+  display: flex;
+  align-items: center;
   margin-right: 40px;
-  text-transform: uppercase;
+  text-transform: uppercase;    
 
   &:last-child {
+    margin-right: 0;
+  }
+  @media (max-width:992px){
     margin-right: 0;
   }
 }
@@ -1996,10 +1993,11 @@ ul.nav.nav-tabs{
     top:110px;
     height: 20%;
     max-width: 40%;
-    order:2;
     width: 100%;
     @media(max-width: 1199px){
       max-width: 100%;
+      position: relative;
+      top: 0;
     }
   }
   section.product__general-information {
@@ -2008,12 +2006,22 @@ ul.nav.nav-tabs{
     width: 100%;
     position: relative;
     margin-bottom: 50px;
+    flex:0 0 50%;
     .product-img{
+      width: 100%;
     }
     @media(max-width: 768px){
       flex-wrap: wrap;
       margin: 0;
+      flex:0 0 100%;
     }
+  }
+}
+section#ProdBlock {
+  flex: 0 0 55%;
+  @media (max-width:992px) {
+    flex:0 0 100%;
+    padding: 0;
   }
 }
 .product-img{
@@ -2029,15 +2037,6 @@ img#imgView{
   }
 }
 
-.slick-arrow{
-  font-size: 40px;
-}
-
-svg.cat__icon.icon--arrow-bottom {
-  height: 20px;
-  width: 20px;
-}
-
 .price-shipping__block{
   @media (max-width:1199px){
     display: flex;
@@ -2048,6 +2047,15 @@ svg.cat__icon.icon--arrow-bottom {
 
     }
   }
+}
+#preco br {
+  display: none;
+}
+.header-infoproduct{
+  width: 100%;  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .page-product{
   .breadcrumb__icon{
@@ -2131,14 +2139,6 @@ svg.cat__icon.icon--arrow-bottom {
   }
 }
 
-#product-page {
-  .border {
-    .labels {
-      position: unset;
-    }
-  }
-}
-
 .description_top{
   @media (max-width:1024px){
     display: none;
@@ -2173,9 +2173,9 @@ div#bt_comprar {
     display: flex;
     align-items:  center;
     justify-content:  center;
-    max-width: 50%;
     color:  #fff;
-    border-radius: 3px;    
+    border-radius: 3px;
+    margin: 10px 0px 20px;
     @include link-action('', '', '', darken($cor01, 10%));
 
     button{
@@ -2245,7 +2245,9 @@ h3#img_nao_disp {
 
 // CONFIGURACOES KIT
 
-
+.product__kit {
+  display: none;
+}
 
 .tray-kit {
   border: 1px solid $light-gray;
@@ -2290,6 +2292,8 @@ h3#img_nao_disp {
   width: 90px;
   margin-right: 15px;
   border: 1px solid $light-gray;
+  display: none;
+  background: rebeccapurple;
 }
 
 .tray-kit-name {
@@ -2297,10 +2301,14 @@ h3#img_nao_disp {
   font-size: 15px;
   font-weight: 700;
   padding: 5px 0;
+  margin: 0;
 }
 
 .tray-kit-info {
   overflow: hidden;
+  small{
+    display: none;
+  }
 }
 
 .tray-kit-unity {
@@ -2311,6 +2319,7 @@ h3#img_nao_disp {
   top: 95px;
   width: 90px;
   text-align: center;
+  display: none;
 }
 
 .tray-kit-show-all {
@@ -2396,7 +2405,9 @@ h3#img_nao_disp {
     padding: 15px 0;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
+    z-index: 0;
+    position: relative;
    /* 
     &:after {
       content: '+';
@@ -2416,7 +2427,7 @@ h3#img_nao_disp {
 
 .dispblock.drop{ 
 h3{
-  color: $cor01;
+  color: $cor02;
   /* 
   &:after {
     content: '-';
@@ -2429,14 +2440,616 @@ h3{
 }
 .tabs_wrap {
   display: block !important;
-  padding: 10px 15px;
-  @media(max-width: 991px) {
+  padding: 10px 0;
+  position: relative;
+  @media (max-width:992px){
+    padding: 0;
+    }
+  }
+}
+.tab-content p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.bloco_condicoes {
+  position: relative;
+  ul.lista_condicoes {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: relative;
+    li.condicoes-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      .icon--arrow-bottom{
+        opacity: 0;
+        visibility: hidden;
+        transform: rotate(0deg);
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 0px;
+        @media (max-width:992px){
+          display: none;
+        }
+      }
+      // &:hover{
+      //   .icon--arrow-bottom{
+      //     opacity: 1;
+      //     visibility: visible;
+      //   }
+      // }
+      svg{
+        fill: $dark-gray;
+      }
+      span{
+        color: $dark-gray;
+        font-size: 11px;
+        padding: 5px 0;
+      }
+    }
+  }
+}
+
+.condicoes-item {
+  display: inline-block;
+  text-align: center;
+}
+
+.dropdown-content {
+  opacity: 0;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  right: 0px;
+  border: 1px solid #dfdfdf;
+  visibility: hidden;
+  bottom: 80px;
+  transition: all 200ms ease-in;
+  text-align: left;
+  @media (max-width:992px){
+    bottom: 0;
+    position: fixed;
+    height: 100vh;
+    z-index: 999;
     padding: 0;
   }
+  span{
+    p.first-paragraph {
+      width: 100%;
+      background: $cor01;
+      position: relative;
+      left: 0;
+      top: 0;
+      padding: 25px 15px;
+      color: #fff;    
+      font-size: 20px;
+      line-height: 20px;
+    }
+    p{
+      line-height: 15px;
+      padding: 0 15px;
+      font-size: 15px;
+    }
   }
 }
 
-#product-page .product__image .container_thumb > img {
-  max-height: 100% !important;
+// .condicoes-item:hover .dropdown-content {
+//   display: block;
+//   opacity: 1;
+//   visibility: visible;
+//   @media (max-width:992px){
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+// }
+
+li.condicoes-item.drop{
+  .dropdown-content{
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
+.closeModalinfo {
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  z-index: 999;
+  color: $cor02;
+  @media (max-width:992px){
+    top: 20px;
+    color: #fff;
+
+  }
+}
+
+ul.slick-dots {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  li {
+    margin: 0 2px;
+    border-radius: 100%;
+    width: 25px;
+    height: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+      width: 10px;
+      height: 10px;
+      background: #869791;
+      border-radius: 100%;
+      font-size: 0;
+    }
+  }
+}
+.slick-active{
+  button{
+    background: $cor01 !important;
+  }
+}
+
+
+
+.bloco_condicoes{
+  width: 100%;
+  label {
+    display: block;
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: $cor02;
+  }
+
+  .dropdown {
+    position: relative;
+    display:block;
+    margin-top:0.5em;
+    padding:0;
+}
+
+  .dropdown select {
+    width:100%;
+    margin:0;
+    background:none;
+    border: 1px solid transparent;
+    outline: none;
+  /* Prefixed box-sizing rules necessary for older browsers */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  /* Remove select styling */
+    appearance: none;
+    -webkit-appearance: none;
+  /* Magic font size number to prevent iOS text zoom */
+  font-size:1.25em;
+  /* General select styles: change as needed */
+  /* font-weight: bold; */
+    color: #444;
+    padding: .6em 1.9em .5em .8em;
+    line-height:1.3;
+}
+.dropdown select,
+label {
+  font-family:inherit;
+}
+
+/* Custom arrow sits on top of the select - could be an image, SVG, icon font, etc. or the arrow could just baked into the bg image on the select */
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 8px;
+  top: 50%;
+  right: 1em;
+  margin-top:-4px;
+  z-index: 2;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpolygon fill='rgb(102,102,102)' points='8,12 0,0 16,0'/%3E%3C/svg%3E") 0 0 no-repeat;  
+  /* These hacks make the select behind the arrow clickable in some browsers */
+  pointer-events:none;
+}
+
+/* This hides native dropdown button arrow in IE 10/11+ so it will have the custom appearance, IE 9 and earlier get a native select */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .dropdown select::-ms-expand {
+    display: none;
+  }
+  /* Removes the odd blue bg color behind the text in IE 10/11 and sets the text to match the focus style text */
+  select:focus::-ms-value {
+    background: transparent;
+    color: #222;
+  }
+}
+
+/* Firefox >= 2 -- Older versions of FF (v2 - 6) won't let us hide the native select arrow, so we'll just hide the custom icon and go with native styling */
+/* Show only the native arrow */
+body:last-child .dropdown::after, x:-moz-any-link {
+  display: none;
+}
+/* reduce padding */
+body:last-child .dropdown select, x:-moz-any-link {
+  padding-right: .8em;
+}
+
+/* Firefox 7+ -- Will let us hide the arrow, but inconsistently (see FF 30 comment below). We've found the simplest way to hide the native styling in FF is to make the select bigger than its container. */
+/* The specific FF selector used below successfully overrides the previous rule that turns off the custom icon; other FF hacky selectors we tried, like `*>.dropdown::after`, did not undo the previous rule */
+
+/* Set overflow:hidden on the wrapper to clip the native select's arrow, this clips hte outline too so focus styles are less than ideal in FF */
+_::-moz-progress-bar, body:last-child .dropdown {
+  overflow: hidden;
+}
+/* Show only the custom icon */
+_::-moz-progress-bar, body:last-child .dropdown:after {
+  display: block;
+}
+_::-moz-progress-bar, body:last-child .dropdown select {
+  /* increase padding to make room for menu icon */
+  padding-right: 1.9em;
+  /* `window` appearance with these text-indent and text-overflow values will hide the arrow FF up to v30 */
+  -moz-appearance: window;
+  text-indent: 0.01px;
+  text-overflow: "";
+  /* for FF 30+ on Windows 8, we need to make the select a bit longer to hide the native arrow */
+  width: 110%;
+}
+
+/* At first we tried the following rule to hide the native select arrow in Firefox 30+ in Windows 8, but we'd rather simplify the CSS and widen the select for all versions of FF since this is a recurring issue in that browser */
+/* @supports (-moz-appearance:meterbar) and (background-blend-mode:difference,normal) {
+.dropdown select { width:110%; }
+}   */
+
+
+/* Firefox 7+ focus style - This works around the issue that -moz-appearance: window kills the normal select focus. Using semi-opaque because outline doesn't handle rounded corners */
+_::-moz-progress-bar, body:last-child .dropdown select:focus {
+  outline: 2px solid rgba(180,222,250, .7);
+}
+
+
+/* Opera - Pre-Blink nix the custom arrow, go with a native select button */
+x:-o-prefocus, .dropdown::after {
+  display:none;
+}
+
+
+/* Hover style */
+.dropdown:hover {
+  border:1px solid #888;
+}
+
+/* Focus style */
+select:focus {
+  outline:none;
+  background-color:transparent;
+  color: #222;
+}
+
+
+/* Firefox focus has odd artifacts around the text, this kills that */
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+option {
+  font-weight:normal;
+}
+
+
+/* These are just demo button-y styles, style as you like */
+.button {
+  border: 1px solid #bbb;
+  border-radius: 0;
+}
+
+.output {
+  margin: 0 auto;
+  padding: 1em 0; 
+}
+.colors {
+  padding: 0;
+  color: #000;
+  display: none;
+  font-size: 13px;
+  line-height: normal;
+  }
+}
+.bloco-frete{
+  padding: 0 15px;
+}
+
+li.condicoes-item.drop{
+  svg.cat__icon.icon--arrow-bottom{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@media (min-width:992px){
+  .owl-pagination{
+    display: none;
+  }
+}
+@media (max-width:992px){
+  .owl-buttons{
+    display: none;
+  }
+}
+
+
+.products-visited {
+  padding: 0;
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  .related-title {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  #NavVisitados {
+    width: 100%;
+  }
+  .visitados_itens{
+    display: none;
+  }
+  .visitados_produtos{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    .paginacao_ajax {
+      order: 2;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0 0;
+    }
+    .clearVisiteds {
+      height: 30px;
+      display: none;
+      align-items: center;
+      width: 120px;
+      background: $cor02;
+      justify-content: center;
+      color: #fff;
+      border-radius: 100px;
+    }
+    #produtos{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 15px;
+      ul{
+        max-width: 350px;
+        text-align: center;
+        width: 100%;
+        padding: 0 1px;
+        li{
+          h3{
+            text-align: left;
+            font-size: 15px;
+            @media (max-width:992px){
+              height: 60px;
+              font-size: 13px;
+            }
+            a{
+              color: #7f7f7f;
+            }
+          }
+          .precode{
+            color: #7f7f7f;
+            display: block;
+            font-size: 16px;
+            font-weight: 400;
+            height: 14px;
+            line-height: 14px;
+            margin: 0px 0 5px;
+            text-align: left;
+            text-decoration: line-through;
+            @media (max-width:992px){
+              font-size: 14px;
+            }
+          }
+          .oculta_destaque{
+            display: none;
+          }
+          .precoAvista{
+            color: #000;
+            font-size: 25px;
+            font-weight: 600;
+            display: block;
+            text-align: left;
+            @media (max-width:992px){
+              font-size: 18px;
+            }
+          }
+          span.txt-cadaparcelas {
+            display: none;
+        }
+          .operadora, .preco-parc2, .preco-de  {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+span#paginacao_ajax_prod {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0;
+  justify-content: center;
+}
+
+span#linksPag{
+  display: flex;
+  font-size: 11px;
+  padding: 10px 0;
+  a{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    color: $dark-gray;
+  }
+  .pageON{
+    color: $cor02;
+  }
+}
+
+
+
+
+// aside
+
+
+
+
+@media (max-width: 1199px) {
+  .smart_filter {
+    background-color: white;
+    bottom: 0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 3/10);
+    display: block !important;
+    height: 100vh;
+    left: -310px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    padding: 45px 0 0 0;
+    position: fixed;
+    width: 300px;
+    @include transition();
+    top: 0;
+    z-index: 20;
+
+    .mobileFilter {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      z-index: 30;
+      i {
+        color: lighten($cor02, 100%);
+      }
+    }
+  }
+
+  // #nav_bar {
+  //   background-color: white;
+  //   bottom: 0;
+  //   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 3/10);
+  //   display: block !important;
+  //   height: 100vh;
+  //   left: -310px;
+  //   max-height: 100vh;
+  //   overflow-y: scroll;
+  //   padding: 0;
+  //   position: fixed;
+  //   -webkit-transition: all 300ms ease;
+  //   -o-transition: all 300ms ease;
+  //   transition: all 300ms ease;
+  //   top: 0;
+  //   width: 300px;
+  //   z-index: 20;
+
+  //   .container {
+  //     max-width: 300px;
+  //   }
+
+  //   .mobileMenu {
+  //     position: absolute;
+  //     right: 15px;
+  //     top: 10px;
+  //     z-index: 30;
+  //     i {
+  //       color: lighten($cor02, 100%);
+  //     }
+  //   }
+  // }
+}
+
+.ac_sm_ft,
+.ac_sm_menu {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  #mask {
+    background: rgba($cor02, (5/10));
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 19;
+  }
+}
+
+.ac_sm_ft {
+  .smart_filter {
+    left: 0;
+    form {
+      position: absolute;
+      overflow-x: scroll;
+      max-height: 90%;
+    }
+  }
+}
+
+.ac_sm_menu {
+  #nav_bar {
+    display: block !important;
+    left: 0;
+
+    .dropdown-switcher {
+      display: none;
+    }
+  }
+}
+.filter-block{
+  margin: -1px 0;
+  @media (max-width:992px){
+    padding: 0 15px;
+  }
+  .list-block {
+    // opacity: 1;
+    // max-height: 100%;
+    // visibility: visible;
+    // transition: all 200ms ease-in-out;
+    // @media (max-width:992px){
+      opacity: 0;
+      max-height: 0;
+      visibility: hidden;
+      transition: all 200ms ease-in-out;
+    // }
+  }
+}
+.showcase{
+  figure.product-image {
+    max-height: 255px;
+    overflow: hidden;
+  }
+}
+.filter-block.drop ul {
+  max-height: 100%;
+  visibility: visible;
+  opacity: 1;
+  
+}
+.filter-block:nth-child(9) {
+  display: none;
+}
