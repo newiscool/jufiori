@@ -1,3 +1,9 @@
+
+.fotoDisplayNone{
+  @media (max-width:992px){
+    display: none;
+  }
+}
 #product-page {
   padding-top: 30px;
   @media (max-width:992px){
@@ -171,6 +177,9 @@
     max-width: 90px;   
     @media (max-width:992px) {
       max-width: 100%;
+      width: 100%;
+      position: relative;
+      display: block !important;
     }
     li {
       display: flex;
@@ -182,17 +191,20 @@
       margin-left: 0;
 
       @media(max-width: 992px) {
-        display: block!important;
-        width: 15px;
-        height: 15px;
-        border-radius: 100%;
+        height: auto;
+        position: relative;
+        display: block;
+        margin: 5px;
+        border: none;
+        width: auto;
       }
 
       img {
         height: auto;
         width: 100%;
         @media(max-width: 992px) {
-          border-radius: 100%;
+          width: auto;
+          height: 280px;
         }
       }
     }
@@ -767,6 +779,7 @@
       align-items: center;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       @media(max-width: 992px) {
         flex-wrap: wrap;
@@ -787,8 +800,9 @@
   }
 
   .fotosCompreJunto {
-    flex: 0 0 35%;
-    text-align: center;
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
 
     @media(max-width: 1199px) {
       margin: 0 0 10px;
@@ -860,17 +874,11 @@
   .precoCompreJunto {
     flex: 1 1 auto;
     position: relative;
+    margin: 15px 0;
 
     > div {
-      line-height: 8px !important;
-      margin-top: 10px;
-
-      &:first-child {
-        margin-top: 0;
-      }
-
       > strong {
-        color: $cor02;
+        color: $cor01;
         display: block;
         font-size: 14px;
         font-weight: 600;
@@ -879,20 +887,10 @@
       }
     }
 
-    div, span {
-      color: #959595;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: normal;
-      text-align: left;
-
-      @media(max-width: 1199px) {
-        text-align: center;
-      }
-    }
+  
 
     a {
-      color: #959595;
+      color: $dark-gray;
       font-size: 14px;
       font-weight: 600;
       line-height: normal;
@@ -906,7 +904,7 @@
 
     .comprejuto_preco {
       &, span {
-        color: #959595;
+        color: $dark-gray;
         display: inline-block;
         font-size: 13px;
         font-weight: 600;
@@ -948,7 +946,7 @@
     }
 
     > button {
-      background: linear-gradient(180deg, #BCE779 0, #80D23F 100%);
+      background: linear-gradient(180deg, #bd1fb0 0, #7b0c71 100%);
       color: white;
       display: flex;
       font-size: 20px;
@@ -1517,6 +1515,12 @@ ul#carousel {
   align-items:  center;
   @media(max-width: 992px) {
     justify-content: center;
+    display: block;
+    max-width: 320px;
+    padding: 0 15px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -1992,7 +1996,7 @@ ul.nav.nav-tabs{
     position: sticky;
     top:110px;
     height: 20%;
-    max-width: 40%;
+    max-width: 50%;
     width: 100%;
     @media(max-width: 1199px){
       max-width: 100%;
@@ -2018,7 +2022,7 @@ ul.nav.nav-tabs{
   }
 }
 section#ProdBlock {
-  flex: 0 0 55%;
+  flex: 0 0 50%;
   @media (max-width:992px) {
     flex:0 0 100%;
     padding: 0;
@@ -2250,8 +2254,7 @@ h3#img_nao_disp {
 }
 
 .tray-kit {
-  border: 1px solid $light-gray;
-  padding: 15px;
+  padding: 0;
   margin-bottom: 15px;
 
   .tray-kit-list {
@@ -2267,9 +2270,8 @@ h3#img_nao_disp {
 }
 
 .tray-kit-item {
-  max-width: 45%;
-  padding: 10px;
-  border: 1px solid $light-gray;
+  max-width: 100%;
+  padding: 15px;
   margin: 5px;
 }
 
@@ -2292,9 +2294,8 @@ h3#img_nao_disp {
   width: 90px;
   margin-right: 15px;
   border: 1px solid $light-gray;
-  display: none;
-  background: rebeccapurple;
 }
+
 
 .tray-kit-name {
   color: $cor02;
@@ -2651,7 +2652,7 @@ label {
   right: 1em;
   margin-top:-4px;
   z-index: 2;
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpolygon fill='rgb(102,102,102)' points='8,12 0,0 16,0'/%3E%3C/svg%3E") 0 0 no-repeat;  
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='https://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpolygon fill='rgb(102,102,102)' points='8,12 0,0 16,0'/%3E%3C/svg%3E") 0 0 no-repeat;  
   /* These hacks make the select behind the arrow clickable in some browsers */
   pointer-events:none;
 }

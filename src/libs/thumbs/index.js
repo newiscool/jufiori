@@ -54,6 +54,32 @@ if( typeof $  ==  'function') {
     
     function selectThumb(index) {
         $(`.thumbs li`).removeClass('thumbs__item--actived'); console.log(`.thumbs [data-index=${index}]`);
+        
+        setTimeout(function() {
+        if (window.innerWidth < 992) {
+            if (jQuery("#carousel").children().length <= 0) {
+            } else {
+                // console.log("passou aqui")
+                jQuery('.jcarousel-skin-tango').slick({
+                    centerMode: true,
+                    slidesToShow: 1,
+                    adaptiveHeight: true,
+                    variableWidth: true,
+                    dots: true,
+                    arrows: false,  
+                });
+                // console.log("não vazio");
+            }
+        }
+        if (jQuery("#carousel").children().length <= 0) {
+            console.log("vazio");
+        } else {
+            jQuery("#foto_p").addClass("fotoDisplayNone");
+            console.log("não vazio");
+        }
+
+        },100)
+        
         $(`.thumbs [data-index=${index}]`).closest('li').addClass('thumbs__item--actived');
     }
 

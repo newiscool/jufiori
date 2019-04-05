@@ -682,7 +682,7 @@ button {
       left: 50%;
       max-width: 100%;
       transform: translateX(-50%);
-      width: auto;
+      width: 100%;
       @media (max-width:992px){
         max-width: 150%;
       }
@@ -778,4 +778,7 @@ main {
   width: 100%;
 }
 
-
+.owl-carousel 
+{
+  touch-action: manipulation; 
+}

@@ -1,4 +1,4 @@
-<li itemscope itemtype="http://schema.org/SomeProducts">
+<li itemscope itemtype="https://schema.org/SomeProducts">
     <div class="border {% if not product.available %} off {% endif %}">
         <div class="left">
             <figure class="product-image">
@@ -17,23 +17,20 @@
         <div class="right">
             <div class="env-category">
                 {% for cat in categories %}
-                {% if cat.id == product.category_id %}
-                <a href="{{ cat.link }}" class="product__category">{{ cat.name }}</a>
-                {% endif %}
+                    {% if cat.id == product.category_id %}
+                        <a href="{{ cat.link }}" class="product__category">{{ cat.name }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
-
-
             <div class="product-name" itemprop="name">
                 <a href="{{ product.link }}">
                     <h3>{{ product.name|slice(0,80) }}</h3>
                 </a>
-
             </div>
 
             {% if product.available %}
 
-            <div class="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <div class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 {% if product.upon_request %}
                 <span class="sob-consulta">Pre&#231;o sob consulta</span>
                 {% else %}

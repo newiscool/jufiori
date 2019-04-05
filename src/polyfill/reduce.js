@@ -1,5 +1,5 @@
 // Etapas de produção para o ECMA-262, Edition 5, 15.4.4.21
-// Referencia: http://es5.github.io/#x15.4.4.21
+// Referencia: https://es5.github.io/#x15.4.4.21
 if (!Array.prototype.reduce) {
     Array.prototype.reduce = function(callback /*, valorInicial*/) {
         'use strict';

@@ -1,3 +1,6 @@
+
+
+
 if (window.innerWidth < 992) {
     jQuery( ".checkMenu" ).on( "click", function() {
         // console.log("passouAq")
@@ -118,6 +121,17 @@ jQuery(document).ready(function ($) {
                 pagination: false,
                 singleItem: false
             });
+            jQuery(".tray-kit-list").owlCarousel({
+                autoPlay: false,
+                items: 4,
+                itemsCustom: [[320, 2], [600, 2], [768, 2], [992, 2], [1200, 2]],
+                itemsScaleUp: false,
+                itemsTabletSmall: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                pagination: false,
+                singleItem: false
+            });
 
           /*  jQuery(".showcase__list").owlCarousel({
                 autoPlay: false,
@@ -185,6 +199,21 @@ jQuery(document).ready(function ($) {
                     autoPlay: true,
                     items: 1,
                     itemsCustom: [[320, 1], [768, 1], [992, 1], [1200, 1]],
+                    itemsScaleUp: false,
+                    itemsTabletSmall: false,
+                    navigation: true,
+                    navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                    pagination: false,
+                    singxleItem: false
+                });
+            }
+            if(jQuery(window).width() < 1200) {
+                jQuery( ".plus.color" ).remove();
+                jQuery( ".cpClear" ).remove();
+                jQuery(".fotosCompreJunto").owlCarousel({
+                    autoPlay: true,
+                    items: 1,
+                    itemsCustom: [[320, 2], [768, 2], [992, 3], [1200, 3]],
                     itemsScaleUp: false,
                     itemsTabletSmall: false,
                     navigation: true,
@@ -431,3 +460,68 @@ jQuery("svg.search__icon").click(function () {
 jQuery(".closeModalinfo").click(function () {    
     jQuery('.condicoes-item').removeClass('drop');
 });
+
+
+
+
+setTimeout(function() {
+    jQuery(window).load(function(){
+        if (window.innerWidth < 992) {
+            if (jQuery("#carousel").children().length <= 0) {
+            } else {
+                // console.log("passou aqui")
+                jQuery('.jcarousel-skin-tango').not('.slick-initialized').slick({
+                    centerMode: true,
+                    slidesToShow: 1,
+                    adaptiveHeight: true,
+                    variableWidth: true,
+                    dots: true,
+                    arrows: false,  
+                });
+                // console.log("não vazio");
+            }
+        }
+        if (jQuery("#carousel").children().length <= 0) {
+            console.log("vazio");
+        } else {
+            jQuery("#foto_p").addClass("fotoDisplayNone");
+            console.log("não vazio");
+        }
+        
+    })
+    jQuery(".lista_cor_variacao li").addClass("liTeste");
+},100)
+$(function(){
+
+$('liTeste').click(function(){
+    console.log("passou")
+    setTimeout(function() {
+        jQuery(window).load(function(){
+            if (window.innerWidth < 992) {
+                if (jQuery("#carousel").children().length <= 0) {
+                } else {
+                    // console.log("passou aqui")
+                    jQuery('.jcarousel-skin-tango').not('.slick-initialized').slick({
+                        centerMode: true,
+                        slidesToShow: 1,
+                        adaptiveHeight: true,
+                        variableWidth: true,
+                        dots: true,
+                        arrows: false,  
+                    });
+                    // console.log("não vazio");
+                }
+            }
+            if (jQuery("#carousel").children().length <= 0) {
+                console.log("vazio");
+            } else {
+                jQuery("#foto_p").addClass("fotoDisplayNone");
+                console.log("não vazio");
+            }
+            
+        })
+        jQuery(".lista_cor_variacao li").addClass("liTeste");
+        return false;
+    },10)
+})
+})

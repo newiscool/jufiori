@@ -1,8 +1,8 @@
 {"current":{
   "theme_id":"150699",
 
-      "phones"      :   "(14) 9 8171-8343",
-      "whatsapp"    :   "(14) 9 8717-8343",
+      "phones"      :   "(14) 9 9750-2053",
+      "whatsapp"    :   "(14) 9 9750-2053",
       "emailum"     :   "sac@juforminhas.com",
       "support"     :   "Seg à Sex, das 8 às 18h",
       "phone"       :   "",
@@ -31,25 +31,25 @@
 
       "favicon": "",
 
-      "vitrine1": "Olha só que legal:",
+      "vitrine1": "Olha só que legal",
       "quantidade1": "9",
       "filtros1": "available",
       "ordem1": "rand",
       "showCase1active":"1",
-      "categories1":"",
+      "categories1":"11",
     
-      "vitrine2": "Olha só que legal:",
+      "vitrine2": "Especial da Jufiori",
       "quantidade2": "9",
       "filtros2": "available",
       "ordem2": "rand",
       "showCase2active":"1",
-      "categories2":"",
+      "categories2":"17",
          
-      "vitrine3": "Kits e Presentes",
+      "vitrine3": "Veja só esses Kits",
       "quantidade3": "9",
       "filtros3": "available",
       "ordem3": "rand",
-      "showCase3active":"0",
+      "showCase3active":"1",
       "categories3":"",
 
       "copyright" : "JU FIORI, CNPJ: 29568663000199, RUA DOMINGOS JORGE VELHO/MARÍLIA-SP, CEP: 17523-775, TODOS OS DIREITOS RESERVADOS. PROIBIDA A REPRODUÇÃO TOTAL OU PARCIAL. PREÇOS E ESTOQUE SUJEITOS A ALTERAÇÃO SEM AVISO PRÉVIO.",
@@ -142,6 +142,7 @@
       "ruler8":"Comprando no cartão",
       
       "aboutus":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum </p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum </p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum </p>"
+      
     
   }
 }

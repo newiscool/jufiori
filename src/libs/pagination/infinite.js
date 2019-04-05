@@ -10,7 +10,7 @@ $(document).ready(function(){
     let textButton        = infinite.attr('data-infinite-button');
     let textButtonLoading = infinite.attr('data-infinite-button-loading');
     let item              = '.showcase__item';
-    let paginateClass     = '.paginates'
+    let paginateClass     = '.paginates';
 
     if(!auto)   auto = true;
     else        auto = auto == 'true' ? true : false; 

@@ -5,9 +5,7 @@
         <i class="fa fa-times" aria-hidden="true"></i>
     </button>
     <div class="categories">
-        <div class="categories__title">
-            Categoria
-        </div>
+        <div class="categories__title">Categoria</div>
         <ul class="categories__list">
 
             {% for cat in categories %}
@@ -55,7 +53,7 @@
             data-infinite="{{ paginateInfinite ? 'true' : 'false' }}"
             data-infinite-result=".showcase__list" 
             data-infinite-button="CARREGAR MAIS PRODUTOS" 
-            data-infinite-button-loading="Carregando mais produtos" 
+            data-infinite-button-loading="CARREGANDO MAIS PRODUTOS" 
             data-infinite-auto="true" >
 
             {% element 'snippets/showcase' {"products": products} %}

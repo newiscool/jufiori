@@ -1,5 +1,5 @@
 <div id="product-page" class="product-page">
-    <div class="produto-wrapper" itemscope itemtype="http://schema.org/Product">
+    <div class="produto-wrapper" itemscope itemtype="https://schema.org/Product">
         <section class="product__general-information">
             <div class="product__offer" >
                 {% set percent = 100 - ( product.price_offer / product.price ) * 100 %}
@@ -26,7 +26,7 @@
                             </span>
                         </div>
                     {% endif %}
-                    <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                         {{ productHelper.pricing(price) }}
                         {{ productHelper.gifts() }}
                         <div class="tag-freeshiping">
@@ -39,7 +39,7 @@
                             {% endif %}
                         </div>
                         <div class="product__variations">{{ productHelper.variants() }}</div>
-                        <div class="product__kit">{{ productHelper.kit() }}</div>
+                        {{ productHelper.kit() }}
                         {% if productHelper.form() %}
                             <div class="tray-product-form-wrapper">{{ productHelper.form() }}</div>
                         {% endif %}
